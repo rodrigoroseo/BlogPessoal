@@ -24,6 +24,13 @@ export class AuthService {
     return this.http.post<User>('https://generationblogpessoalroseo.herokuapp.com/usuarios/cadastrar', user)
   }
 
+  atualizar(user: User): Observable<User>{
+    this.token = {
+      headers: new HttpHeaders().set('Authorization', environment.token)
+    }
+    return this.http.put<User>('https://generationblogpessoalroseo.herokuapp.com/usuarios/atualizar', user, this.token)
+  }
+
   getByIdUser(id: number): Observable<User>{
     this.token = {
       headers: new HttpHeaders().set('Authorization', environment.token)
